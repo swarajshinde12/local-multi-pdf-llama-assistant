@@ -1,0 +1,8 @@
+streamlit
+pypdf
+sentence-transformers
+faiss-cpu
+numpy
+requests
+beautifulsoup4
+llama-cpp-python==0.3.16

@@ -1,0 +1,20 @@
+# Python junk
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+venv310/
+
+# Models (DO NOT push GGUF to GitHub)
+models/
+*.gguf
+
+# Local data (PDFs etc.)
+data/
+*.pdf
+
+# Streamlit config
+.streamlit/
