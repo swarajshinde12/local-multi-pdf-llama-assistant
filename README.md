@@ -1,155 +1,47 @@
-🚀 Local Multi-PDF LLaMA Assistant
+# Local Multi-PDF LLaMA Assistant  
+A fully offline Retrieval-Augmented Generation (RAG) system built using LLaMA (GGUF), FAISS, and Sentence Transformers.  
+This project demonstrates a complete end-to-end AI pipeline capable of indexing multiple PDFs and answering queries using a local large language model — without any internet or API keys.
 
-A Fully Offline RAG System Using LLaMA, FAISS, and Sentence Transformers
+---
 
-🧠 Overview
+## Overview
 
-Local Multi-PDF LLaMA Assistant is a 100% offline, privacy-focused RAG (Retrieval-Augmented Generation) system that:
+The Local Multi-PDF LLaMA Assistant is designed as a privacy-focused, offline question-answering system.  
+It performs text extraction from PDFs, chunking, embedding generation, vector similarity search, and final answer generation through a locally hosted LLaMA model.
 
-Reads multiple PDFs
+This system reflects industry-grade concepts used in enterprise RAG applications, including vector databases, embedding architectures, context-aware LLM prompting, and scalable document ingestion.
 
-Splits them into chunks
+---
 
-Generates semantic embeddings
+## Key Features
 
-Performs similarity search with FAISS
+### 1. Multi-PDF Document Ingestion  
+Automatically loads and processes every PDF placed in the `data/` directory.
 
-Feeds retrieved context into a local LLaMA GGUF model
+### 2. Text Chunking Pipeline  
+Implements sliding-window chunking to preserve semantic continuity and increase retrieval accuracy.
 
-Answers questions like ChatGPT — but completely offline
+### 3. Embedding Generation  
+Uses `sentence-transformers/all-MiniLM-L6-v2` to convert text chunks into dense vectors.
 
-This project demonstrates practical, industry-level AI engineering skills, including NLP pipelines, embedding models, vector databases, and local LLM inference.
+### 4. Vector Search with FAISS  
+Efficient nearest-neighbor retrieval across thousands of chunks.
 
-🌟 Key Features
-📚 Multi-PDF Support
+### 5. Local LLaMA GGUF Inference  
+Runs entirely offline using `llama-cpp-python`.  
+Supports CPU and optional GPU acceleration (CUDA, if available).
 
-Automatically loads every PDF in the data/ folder.
+### 6. Streamlit User Interface  
+- Chat-style interface  
+- Conversation history  
+- Clean layout  
+- Sidebar listing indexed PDFs  
+- Dark mode support  
 
-✂️ Smart Text Chunking
+### 7. Modular Architecture  
+Every major component is decoupled and placed inside the `modules/` directory for clarity and reusability.
 
-Chunking with overlap for maximum context retention.
+---
 
-🔍 Semantic Embeddings
+## System Architecture
 
-Using sentence-transformers/all-MiniLM-L6-v2.
-
-⚡ FAISS Vector Search
-
-Fast similarity queries across thousands of chunks.
-
-🤖 Local LLaMA GGUF Model
-
-Runs entirely offline using llama-cpp-python.
-
-No API keys.
-No internet.
-No privacy risk.
-
-💬 ChatGPT-Style Streamlit UI
-
-Chat bubbles
-
-Message history
-
-Dark mode
-
-Sidebar showing indexed PDFs
-
-Smooth UX
-
-🚀 GPU Acceleration (Optional)
-
-Automatically uses CUDA if installed.
-
-🧩 Modular Architecture
-
-Every component cleanly separated inside modules/.
-
-🏗️ Architecture Diagram
-PDFs → Text Extraction → Chunking → Embeddings → FAISS Search → Top-K Context
-                  ↓                                                ↑
-                  └────────────── LLaMA GGUF Model ←───────────────┘
-
-📁 Project Structure
-local-multi-pdf-llama-assistant/
- ┣ modules/
- ┃ ┣ pdf_loader.py
- ┃ ┣ text_splitter.py
- ┃ ┣ embedder.py
- ┃ ┣ vector_store.py
- ┃ ┣ local_llm.py
- ┃ ┣ local_llm_gguf.py
- ┃ ┣ multi_pdf_loader.py
- ┃ ┗ multi_rag.py
- ┣ data/
- ┣ models/
- ┣ app.py
- ┣ app_chat_gguf.py
- ┣ app_gguf.py
- ┣ README.md
- ┣ requirements.txt
- ┣ .gitignore
-
-🔧 Installation
-1️⃣ Clone repo
-git clone https://github.com/swarajshinde12/local-multi-pdf-llama-assistant
-cd local-multi-pdf-llama-assistant
-
-2️⃣ Create virtual environment
-python -m venv venv
-.\venv\Scripts\activate
-
-3️⃣ Install requirements
-pip install -r requirements.txt
-
-4️⃣ Add a GGUF model
-
-Download any LLaMA or Mistral GGUF file (example):
-
-Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
-
-Place it in:
-
-models/llm.gguf
-
-▶️ Run the App
-Chat Interface (recommended)
-streamlit run app_chat_gguf.py
-
-Basic RAG app
-streamlit run app_gguf.py
-
-💡 Example Query
-
-User:
-
-What does this document say about neural networks?
-
-Assistant (local LLaMA):
-Summarizes using retrieved chunks + LLM reasoning.
-
-🎯 Why This Project Impresses Recruiters
-
-This project shows you can:
-
-✔ Implement real RAG pipelines
-✔ Work with embeddings + FAISS
-✔ Run local LLMs with quantization
-✔ Build modular AI systems
-✔ Build clean UI apps
-✔ Handle multi-PDF knowledge bases
-✔ Optimize for GPU where possible
-
-This is exactly what companies hiring ML/AI engineers look for.
-
-🔮 Future Enhancements
-
-Add reranking (BGE-Reranker / ColBERT)
-
-Add conversation memory
-
-Show citations in responses
-
-Improve UI animations
-
-Add support for DOCX / TXT
